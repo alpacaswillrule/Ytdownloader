@@ -4,7 +4,7 @@ from pytube import YouTube
 link = input("Enter the link of YouTube video you want to download:  ")
 
 try:
-    yt = YouTube(link)
+    yt = YouTube("https://www.youtube.com/watch?v=Z5pq2kYOWTQ")
 except:
     print('connection error')
 
