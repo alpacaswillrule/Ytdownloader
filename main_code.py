@@ -1,5 +1,7 @@
 from pytube import YouTube
 import sys
+import os
+from moviepy.editor import *
 
 #ask for the link from user
 link = input("Enter the link of YouTube video you want to download:  ")
@@ -9,17 +11,12 @@ try:
 except:
     print('connection error')
 
-#Showing details
-print("Title: ",yt.title)
-print("Number of views: ",yt.views)
-print("Length of video: ",yt.length)
-print("Rating of video: ",yt.rating)
-
-
 #Getting the highest resolution possible
 ys = yt.streams.get_highest_resolution()
 
 #Starting download
 print("Downloading...")
 ys.download()
-print("Download completed!!")
+video = VideoFileClip(os.path.join("path","to","movie.mp4"))
+video.audio.write_audiofile(os.path.join("path","to","movie_sound.mp3"))
+print("Download completed")
