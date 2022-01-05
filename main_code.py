@@ -1,10 +1,11 @@
 from pytube import YouTube
+import sys
 
 #ask for the link from user
 link = input("Enter the link of YouTube video you want to download:  ")
 
 try:
-    yt = YouTube("https://www.youtube.com/watch?v=Z5pq2kYOWTQ")
+    yt = YouTube(link)
 except:
     print('connection error')
 
@@ -15,3 +16,10 @@ print("Length of video: ",yt.length)
 print("Rating of video: ",yt.rating)
 
 
+#Getting the highest resolution possible
+ys = yt.streams.get_highest_resolution()
+
+#Starting download
+print("Downloading...")
+ys.download()
+print("Download completed!!")
